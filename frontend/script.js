@@ -2,6 +2,7 @@ window.addEventListener("load", () => {
   const sendBtn = document.getElementById("send-btn");
   const userInput = document.getElementById("user-input");
   const chatBox = document.getElementById("chat-box");
+  const typingIndicator = document.getElementById("typing-indicator");
 
   sendBtn.addEventListener("click", sendMessage);
   userInput.addEventListener("keydown", (e) => {
@@ -26,6 +27,12 @@ window.addEventListener("load", () => {
     // Clear input
     userInput.value = "";
 
+    // ✨ Show typing indicator
+    if (typingIndicator) {
+      typingIndicator.style.display = "inline-block";
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
     try {
       const res = await fetch("/ask-lisa", {
         method: "POST",
@@ -36,8 +43,10 @@ window.addEventListener("load", () => {
       const data = await res.json();
       console.log("Response:", data);
 
-      // Clear typing indicators
-      document.querySelectorAll(".typing").forEach((el) => el.remove());
+      // ✂️ Hide typing indicator
+      if (typingIndicator) {
+        typingIndicator.style.display = "none";
+      }
 
       if (data.reply) {
         const lisaBubble = document.createElement("div");
@@ -63,6 +72,9 @@ window.addEventListener("load", () => {
       }
     } catch (err) {
       console.error("Fetch error:", err);
+      if (typingIndicator) {
+        typingIndicator.style.display = "none";
+      }
       const failBubble = document.createElement("div");
       failBubble.classList.add("chat-bubble", "lisa");
       failBubble.textContent = "⚠️ Something went wrong.";
