@@ -21,6 +21,7 @@
       gap: 12px;
       position: relative;
       margin-left: 12px;
+      padding-top: 12px;
     }
 
     .logo {
@@ -60,11 +61,17 @@
       filter: grayscale(20%);
     }
 
+    .divider {
+      border-top: 1.5px solid #3F3F3F;
+      margin: 12px 20px;
+    }
+
     .main-wrap {
       display: flex;
       justify-content: center;
       padding: 0 20px 20px;
       flex-grow: 1;
+      background-color: #F7F6F2; /* a lighter shade below the divider */
     }
 
     main {
@@ -216,6 +223,8 @@
       </a>
     </div>
   </header>
+
+  <div class="divider"></div>
 
   <div class="main-wrap">
     <main>
