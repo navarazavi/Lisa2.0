@@ -40,12 +40,12 @@
     }
 
 .atom-icon {
-  height: 29px;
-  vertical-align: middle; /* align to the middle of text */
-  position: relative;
-  top: -1.5px; /* nudge upward gently */
-  filter: hue-rotate(330deg) saturate(.75);
+  height: 26px;
+  align-self: center;
+  filter: hue-rotate(330deg) saturate(0.75);
 }
+
+
 
 
     .powered-by {
@@ -92,16 +92,24 @@
       max-width: 970px;
     }
 
-    .chat-bubble.lisa::before {
+   .chat-bubble.lisa {
+  background-color: #FAF9F5;
+  color: #1e293b;
+  align-self: flex-start;
+  border-top-left-radius: 0;
+  position: relative;
+  padding-left: 20px; /* adds space for the circle */
+}
+
+.chat-bubble.lisa::before {
   content: "";
-  display: inline-block;
-  width: 8px;
-  height: 8px;
+  position: absolute;
+  left: 8px;
+  top: 16px; /* adjust if needed for vertical alignment */
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background-color: #A8C0C5;
-  margin-right: 8px;
-  margin-top: 2px;
-  vertical-align: middle;
 }
 
 
@@ -123,12 +131,6 @@
       color: #1e293b;
     }
 
-    .chat-bubble.lisa {
-      background-color: #FAF9F5;
-      color: #1e293b;
-      align-self: flex-start;
-      border-top-left-radius: 0;
-    }
 
     .chat-scroll {
       display: flex;
