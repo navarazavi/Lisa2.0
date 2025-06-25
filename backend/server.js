@@ -10,7 +10,7 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const CLAUDE_API_KEY = process.env["lisa2-env"]; // ✅ This must match your Render env var name
+const CLAUDE_API_KEY = process.env["lisa2-key"]; // ✅ This must match your Render env var name
 
 // Middleware
 app.use(cors());
