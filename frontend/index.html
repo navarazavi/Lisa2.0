@@ -36,14 +36,14 @@
 
     .logo span {
       font-family: 'Fira Code', monospace;
-      color: #D1D8E4;
+      color: #A8C0C5;
     }
 
 .atom-icon {
-  height: 27px;
+  height: 29px;
   vertical-align: middle; /* align to the middle of text */
   position: relative;
-  top: -2px; /* nudge upward gently */
+  top: -1.5px; /* nudge upward gently */
   filter: hue-rotate(330deg) saturate(.75);
 }
 
@@ -91,6 +91,19 @@
       width: 100%;
       max-width: 970px;
     }
+
+    .chat-bubble.lisa::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #A8C0C5;
+  margin-right: 8px;
+  margin-top: 2px;
+  vertical-align: middle;
+}
+
 
     .chat-bubble {
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
