@@ -5,14 +5,14 @@ window.addEventListener("load", () => {
 
   let typingBubble = null;
 
-  const deliveryNotes = {
-    "pectin": "Airfreight surcharge applied in last shipment",
-    "citric acid": "Normal deliveries",
-    "ascorbic acid": "Previous shipment rejected — microbial contamination",
-    "magnesium citrate": "Supplier backlog reported in March",
-    "gelatin": "Container delayed at port",
-    "stevia extract": "Delivery confirmed"
-  };
+const deliveryNotes = {
+  "pectin": "Heads up: the last shipment included an airfreight surcharge — just something to watch for in the future.",
+  "citric acid": "All good! Citric acid deliveries have been arriving normally. No drama there.",
+  "ascorbic acid": "Yes! It appears the last shipment was rejected due to microbial contamination. We’ll need to double-check the next batch.",
+  "magnesium citrate": "There was a supplier backlog reported back in March — things might still be catching up.",
+  "gelatin (bovine)": "Ugh, the container got delayed at the port. Classic shipping headache.",
+  "stevia extract": "Yep, delivery was confirmed — no issues reported!"
+};
 
   sendBtn.addEventListener("click", sendMessage);
   userInput.addEventListener("keydown", (e) => {
