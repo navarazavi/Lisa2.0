@@ -1,0 +1,110 @@
+[
+  {
+    "2025-06-24 00:00:00": "nan",
+    "Unnamed: 1": "nan",
+    "Unnamed: 2": "nan",
+    "Unnamed: 3": "nan",
+    "Unnamed: 4": "nan",
+    "Unnamed: 5": "nan",
+    "Unnamed: 6": "nan",
+    "Unnamed: 7": "nan",
+    "Unnamed: 8": "nan",
+    "Unnamed: 9": "nan"
+  },
+  {
+    "2025-06-24 00:00:00": "nan",
+    "Unnamed: 1": "nan",
+    "Unnamed: 2": "nan",
+    "Unnamed: 3": "nan",
+    "Unnamed: 4": "nan",
+    "Unnamed: 5": "nan",
+    "Unnamed: 6": "nan",
+    "Unnamed: 7": "nan",
+    "Unnamed: 8": "nan",
+    "Unnamed: 9": "nan"
+  },
+  {
+    "2025-06-24 00:00:00": "Ingredient",
+    "Unnamed: 1": "Formulation Use",
+    "Unnamed: 2": "Current Inventory (g)",
+    "Unnamed: 3": "Monthly Usage Forecast (g)",
+    "Unnamed: 4": "Last Delivery",
+    "Unnamed: 5": "Next Confirmed Delivery",
+    "Unnamed: 6": "Next Delivery Qty (g)",
+    "Unnamed: 7": "Supplier",
+    "Unnamed: 8": "Lead Time (weeks)",
+    "Unnamed: 9": "Notes"
+  },
+  {
+    "2025-06-24 00:00:00": "Pectin",
+    "Unnamed: 1": "Gummy base",
+    "Unnamed: 2": "80000",
+    "Unnamed: 3": "45000",
+    "Unnamed: 4": "2025-05-25 00:00:00",
+    "Unnamed: 5": "2025-07-15 00:00:00",
+    "Unnamed: 6": "60000",
+    "Unnamed: 7": "Ingredion",
+    "Unnamed: 8": "6",
+    "Unnamed: 9": "Airfreight surcharge applied in last shipment"
+  },
+  {
+    "2025-06-24 00:00:00": "Citric Acid",
+    "Unnamed: 1": "Gummy taste/pH",
+    "Unnamed: 2": "18000",
+    "Unnamed: 3": "8000",
+    "Unnamed: 4": "2025-06-09 00:00:00",
+    "Unnamed: 5": "2025-07-04 00:00:00",
+    "Unnamed: 6": "12000",
+    "Unnamed: 7": "Jungbunzlauer",
+    "Unnamed: 8": "4",
+    "Unnamed: 9": "Normal deliveries"
+  },
+  {
+    "2025-06-24 00:00:00": "Ascorbic Acid",
+    "Unnamed: 1": "Gummy API",
+    "Unnamed: 2": "4000",
+    "Unnamed: 3": "4200",
+    "Unnamed: 4": "2025-04-25 00:00:00",
+    "Unnamed: 5": "2025-08-08 00:00:00",
+    "Unnamed: 6": "25000",
+    "Unnamed: 7": "DSM",
+    "Unnamed: 8": "10",
+    "Unnamed: 9": "Previous shipment rejected \u2014 microbial contamination"
+  },
+  {
+    "2025-06-24 00:00:00": "Magnesium Citrate",
+    "Unnamed: 1": "Capsule mineral",
+    "Unnamed: 2": "12000",
+    "Unnamed: 3": "7500",
+    "Unnamed: 4": "2025-05-25 00:00:00",
+    "Unnamed: 5": "TBD",
+    "Unnamed: 6": "\u2014",
+    "Unnamed: 7": "Univar",
+    "Unnamed: 8": "5\u20137",
+    "Unnamed: 9": "Supplier backlog reported in March"
+  },
+  {
+    "2025-06-24 00:00:00": "Gelatin (Bovine)",
+    "Unnamed: 1": "Capsule shell",
+    "Unnamed: 2": "25000",
+    "Unnamed: 3": "20000",
+    "Unnamed: 4": "2025-05-10 00:00:00",
+    "Unnamed: 5": "2025-07-24 00:00:00",
+    "Unnamed: 6": "40000",
+    "Unnamed: 7": "Rousselot",
+    "Unnamed: 8": "7",
+    "Unnamed: 9": "Container delayed at port"
+  },
+  {
+    "2025-06-24 00:00:00": "Stevia Extract",
+    "Unnamed: 1": "Gummy sweetener",
+    "Unnamed: 2": "3000",
+    "Unnamed: 3": "2000",
+    "Unnamed: 4": "2025-05-10 00:00:00",
+    "Unnamed: 5": "2025-07-01 00:00:00",
+    "Unnamed: 6": "5000",
+    "Unnamed: 7": "Cargill",
+    "Unnamed: 8": "4",
+    "Unnamed: 9": "Delivery confirmed"
+  }
+]
