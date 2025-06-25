@@ -10,9 +10,8 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const CLAUDE_API_KEY = process.env["lisa2-key"]; // ✅ This must match your Render env var name
+const CLAUDE_API_KEY = process.env["lisa2-key"];
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
@@ -24,7 +23,7 @@ const __dirname = path.dirname(__filename);
 app.use(express.static(path.join(__dirname, "../frontend")));
 
 // Load inventory from JSON
-const inventoryDataPath = path.join(__dirname, "ro_supply_data.json"); // 🆕 updated file name
+const inventoryDataPath = path.join(__dirname, "ro_supply_data.json");
 let inventoryData = [];
 
 try {
@@ -40,16 +39,45 @@ app.post("/ask-lisa", async (req, res) => {
   const { message } = req.body;
   if (!message) return res.status(400).json({ error: "Message is required" });
 
-const inventoryString = inventoryData.map(item => {
-  const name = item["Ingredient"] || "unnamed item";
-  const qty = item["Current Inventory (g)"] || "N/A";
-  const usage = item["Monthly Usage Forecast (g)"] || "N/A";
-  const nextDelivery = item["Next Confirmed Delivery"] || "N/A";
-  return `${name}: ${qty}g in stock, using ${usage}g/month. Next delivery on ${nextDelivery}.`;
-}).join("\n");
+  const today = new Date();
+  const todayStr = today.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
 
+  const inventoryString = inventoryData.map(item => {
+    const name = item["Ingredient"] || "Unnamed item";
+    const qty = parseFloat(item["Current Inventory (g)"] || 0);
+    const usage = parseFloat(item["Monthly Usage Forecast (g)"] || 0);
+    const deliveryDateStr = item["Next Confirmed Delivery"] || "N/A";
 
-  const personalityIntro = `You are LISA: the Laboratory Inventory and Supply Chain Assistant. You're smart, witty, and designed to help with lab efficiency. Keep responses concise, less than 2 sentences is ideal. No bullet points or lists. You have this inventory:\n${inventoryString}`;
+    let stockoutMessage = "";
+    if (!isNaN(qty) && !isNaN(usage) && usage > 0) {
+      const daysRemaining = Math.floor((qty / usage) * 30.33); // using ~4.33 weeks/month
+      const stockoutDate = new Date(today.getTime() + daysRemaining * 24 * 60 * 60 * 1000);
+      stockoutMessage = ` Projected to run out in ~${daysRemaining} days, around ${stockoutDate.toLocaleDateString("en-US", {
+        month: "long",
+        day: "numeric",
+      })}.`;
+    }
+
+    let deliveryMessage = "";
+    if (deliveryDateStr && deliveryDateStr !== "N/A") {
+      const deliveryDate = new Date(deliveryDateStr);
+      if (!isNaN(deliveryDate)) {
+        const daysUntilDelivery = Math.floor((deliveryDate - today) / (1000 * 60 * 60 * 24));
+        deliveryMessage = ` Next delivery is in ${daysUntilDelivery} days (${deliveryDate.toLocaleDateString("en-US", {
+          month: "long",
+          day: "numeric",
+        })}).`;
+      }
+    }
+
+    return `${name}: ${qty}g in stock, using ${usage}g/month.${stockoutMessage}${deliveryMessage}`;
+  }).join("\n");
+
+  const personalityIntro = `You are LISA: the Laboratory Inventory and Supply Chain Assistant. You're smart, witty, and designed to help with lab efficiency. Keep responses concise, less than 2 sentences is ideal. No bullet points or lists. Today's date is ${todayStr}. Here is the current inventory:\n${inventoryString}`;
 
   try {
     const response = await axios.post(
