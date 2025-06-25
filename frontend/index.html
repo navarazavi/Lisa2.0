@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lisa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #F0EEE6;
+      color: #3F3F3F;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+      margin-left: 12px;
+    }
+
+    .logo {
+      font-size: 33px;
+      font-weight: 500;
+      letter-spacing: 2px;
+    }
+
+    .logo span {
+      font-family: 'Fira Code', monospace;
+      color: #D97858;
+    }
+
+    .atom-icon {
+      height: 30px;
+      margin-top: 4px;
+      filter: hue-rotate(330deg) saturate(2);
+    }
+
+    .powered-by {
+      position: absolute;
+      top: 16px;
+      right: 32px;
+      opacity: 0.8;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .powered-by:hover {
+      opacity: 1;
+    }
+
+    .powered-by img {
+      height: 20px;
+      width: auto;
+      filter: grayscale(20%);
+    }
+
+    .main-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 0 20px 20px;
+      flex-grow: 1;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      max-height: calc(100vh - 160px);
+      padding: 24px 32px;
+      background-color: #FAF9F5;
+      border: 1.75px solid #3F3F3F;
+      border-radius: 4px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 970px;
+    }
+
+    .chat-bubble {
+      font-family: 'Fira Code', monospace;
+      font-size: 13px;
+      background-color: #818181;
+      color: #1e293b;
+      padding: 12px 16px;
+      border-radius: 8px;
+      width: fit-content;
+      max-width: 80%;
+      margin-bottom: 12px;
+      box-shadow: 0px 1px 2px rgba(0,0,0,0.03);
+    }
+
+    .chat-bubble.user {
+      background-color: #E58565;
+      align-self: flex-end;
+      border-top-right-radius: 0;
+    }
+
+    .chat-bubble.lisa {
+      font-family: 'Fira Code', monospace;
+      font-size: 13px;
+      background-color: #FAF9F5;
+      color: #1e293b;
+      padding: 12px 16px;
+      border-radius: 8px;
+      width: fit-content;
+      max-width: 80%;
+      margin-bottom: 12px;
+      align-self: flex-start;
+      border-top-left-radius: 0;
+    }
+
+    .chat-scroll {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+      overflow-y: auto;
+      padding-right: 16px;
+      margin-bottom: 16px;
+      scrollbar-width: thin;
+      scrollbar-color: #3F3F3F transparent;
+    }
+
+    .chat-scroll::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .chat-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .chat-scroll::-webkit-scrollbar-thumb {
+      background-color: #3F3F3F;
+      border-radius: 4px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .chat-scroll:hover::-webkit-scrollbar-thumb {
+      opacity: 1;
+    }
+
+    .typewriter {
+      overflow: hidden;
+      white-space: nowrap;
+      display: inline-block;
+      animation: typewriter 2.8s steps(48, end), blinkOut 1.5s step-end 1 forwards;
+      border-right: 1.5px solid black;
+    }
+
+    @keyframes blinkOut {
+      0%, 50% { border-right-color: rgba(0, 0, 0, 0.8); }
+      100% { border-right-color: transparent; }
+    }
+
+    @keyframes typewriter {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    .intro-message {
+      font-family: 'Fira Code', monospace;
+      font-weight: bold;
+      font-size: 13.5px;
+      margin-bottom: 12px;
+      color: #949191;
+    }
+
+    .intro-message span {
+      color: #3F3F3F;
+    }
+
+    .input-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: auto;
+      padding-bottom: 4px;
+    }
+
+    .input-row input[type="text"] {
+      flex: 1;
+      padding: 12px;
+      border: 1.35px solid #3F3F3F;
+      font-family: 'Fira Code', monospace;
+      font-size: 13px;
+      background-color: #F0EEE6;
+      color: #1f2937;
+      border-radius: 6px;
+    }
+
+    .input-row input[type="text"]:focus {
+      outline: none;
+      background-color: #ffffff;
+    }
+
+    .input-row .send-button {
+      background-color: #F0EEE6;
+      border: 1.35px solid #3F3F3F;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      color: #334155;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-wrap">
+      <div class="logo">L<span>i</span>SA</div>
+      <img src="atoms.png" alt="Atom icon" class="atom-icon" />
+      <a href="https://www.anthropic.com/claude/opus" target="_blank" rel="noopener noreferrer" class="powered-by">
+        <img src="opus.png" alt="Claude Opus 4 logo" />
+      </a>
+    </div>
+  </header>
+
+  <div class="main-wrap">
+    <main>
+      <div class="chat-scroll" id="chat-box">
+        <div id="intro" class="intro-message">
+          <span class="typewriter"><strong>Hello! I’m <span>Lisa</span>, your intelligent lab assistant. Got any questions?</strong></span>
+        </div>
+      </div>
+      <div class="input-row">
+        <input id="user-input" type="text" placeholder="Type a message . . ." />
+        <button class="send-button" id="send-btn" aria-label="Send message">↑</button>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
