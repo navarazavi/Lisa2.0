@@ -19,12 +19,14 @@
       padding: 16px 20px 12px;
     }
 
-    .logo-wrap {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      position: relative;
-    }
+.logo-wrap {
+  display: flex;
+  align-items: baseline; /* use baseline so text aligns properly */
+  gap: 12px;
+  position: relative;
+  margin-left: 12px;
+}
+
 
     .logo {
       font-size: 33px;
@@ -39,7 +41,9 @@
 
 .atom-icon {
   height: 27px;
-  transform: translateY(-3px); /* lift it up a bit */
+  vertical-align: middle; /* align to the middle of text */
+  position: relative;
+  top: -2px; /* nudge upward gently */
   filter: hue-rotate(330deg) saturate(.75);
 }
 
@@ -184,7 +188,6 @@
     .input-row input[type="text"] {
       flex: 1;
       padding: 12px;
-      border: 1.35px solid #3F3F3F;
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-size: 13px;
       background-color: #F0EEE6;
@@ -199,7 +202,6 @@
 
     .input-row .send-button {
       background-color: #F0EEE6;
-      border: 1.35px solid #3F3F3F;
       border-radius: 50%;
       width: 32px;
       height: 32px;
