@@ -10,7 +10,7 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const CLAUDE_API_KEY = process.env["lisa-env"]; // ✅ This must match your Render env var name
+const CLAUDE_API_KEY = process.env["lisa2-env"]; // ✅ This must match your Render env var name
 
 // Middleware
 app.use(cors());
@@ -24,7 +24,7 @@ const __dirname = path.dirname(__filename);
 app.use(express.static(path.join(__dirname, "../frontend")));
 
 // Load inventory from JSON
-const inventoryDataPath = path.join(__dirname, "inventoryData.json");
+const inventoryDataPath = path.join(__dirname, "ro_supply_data.json"); // 🆕 updated file name
 let inventoryData = [];
 
 try {
@@ -89,3 +89,4 @@ app.get("*", (req, res) => {
 app.listen(PORT, () => {
   console.log(`💬 Lisa backend listening on port ${PORT}`);
 });
+
