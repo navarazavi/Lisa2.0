@@ -40,14 +40,14 @@ app.post("/ask-lisa", async (req, res) => {
   const { message } = req.body;
   if (!message) return res.status(400).json({ error: "Message is required" });
 
-  // 🔧 Map using actual keys from your JSON file
-  const inventoryString = inventoryData.map(item => {
-    const date = item["Date"] || "unknown";
-    const name = item["Item Name"] || "unnamed item";
-    const qty = item["Quantity"] || "N/A";
-    const id = item["Item ID"] || "N/A";
-    return `• ${date}: ${name} (${qty}, ${id})`;
-  }).join("\n");
+const inventoryString = inventoryData.map(item => {
+  const name = item["Ingredient"] || "unnamed item";
+  const qty = item["Current Inventory (g)"] || "N/A";
+  const usage = item["Monthly Usage Forecast (g)"] || "N/A";
+  const nextDelivery = item["Next Confirmed Delivery"] || "N/A";
+  return `${name}: ${qty}g in stock, using ${usage}g/month. Next delivery on ${nextDelivery}.`;
+}).join("\n");
+
 
   const personalityIntro = `You are LISA: the Laboratory Inventory and Supply Chain Assistant. You're smart, witty, and designed to help with lab efficiency. Keep responses concise, less than 2 sentences is ideal. No bullet points or lists. You have this inventory:\n${inventoryString}`;
 
