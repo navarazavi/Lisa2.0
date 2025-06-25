@@ -8,11 +8,15 @@
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
-      background-color: #F0EEE6;
       color: #3F3F3F;
       display: flex;
       flex-direction: column;
       height: 100vh;
+    }
+
+    header {
+      background-color: #F0EEE6;
+      padding: 16px 20px 12px;
     }
 
     .logo-wrap {
@@ -20,8 +24,6 @@
       align-items: center;
       gap: 12px;
       position: relative;
-      margin-left: 12px;
-      padding-top: 12px;
     }
 
     .logo {
@@ -43,8 +45,8 @@
 
     .powered-by {
       position: absolute;
-      top: 16px;
-      right: 32px;
+      top: 2px;
+      right: 0;
       opacity: 0.8;
       display: flex;
       align-items: center;
@@ -62,16 +64,16 @@
     }
 
     .divider {
-      border-top: 1.5px solid #3F3F3F;
-      margin: 12px 20px;
+      border-top: 1.25px solid #3F3F3F;
+      width: 100%;
     }
 
     .main-wrap {
+      background-color: #FAF9F5;
+      flex-grow: 1;
       display: flex;
       justify-content: center;
       padding: 0 20px 20px;
-      flex-grow: 1;
-      background-color: #F7F6F2; /* a lighter shade below the divider */
     }
 
     main {
@@ -80,9 +82,6 @@
       flex-grow: 1;
       max-height: calc(100vh - 160px);
       padding: 24px 32px;
-      background-color: transparent;
-      border: none;
-      border-radius: 0;
       overflow: hidden;
       width: 100%;
       max-width: 970px;
@@ -163,7 +162,6 @@
     }
 
     .intro-message {
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-weight: bold;
       font-size: 13.5px;
       margin-bottom: 12px;
@@ -243,5 +241,4 @@
   <script src="script.js"></script>
 </body>
 </html>
-
 
