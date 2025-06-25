@@ -54,7 +54,7 @@ app.post("/ask-lisa", async (req, res) => {
 
     let stockoutMessage = "";
     if (!isNaN(qty) && !isNaN(usage) && usage > 0) {
-      const daysRemaining = Math.floor((qty / usage) * 30.33); // using ~4.33 weeks/month
+      const daysRemaining = Math.floor((qty / usage) * 30.33);
       const stockoutDate = new Date(today.getTime() + daysRemaining * 24 * 60 * 60 * 1000);
       stockoutMessage = ` Projected to run out in ~${daysRemaining} days, around ${stockoutDate.toLocaleDateString("en-US", {
         month: "long",
@@ -77,7 +77,22 @@ app.post("/ask-lisa", async (req, res) => {
     return `${name}: ${qty}g in stock, using ${usage}g/month.${stockoutMessage}${deliveryMessage}`;
   }).join("\n");
 
-  const personalityIntro = `You are LISA: the Laboratory Inventory and Supply Chain Assistant. You're smart, witty, and designed to help with lab efficiency. Keep responses concise, less than 2 sentences is ideal. No bullet points or lists. Today's date is ${todayStr}. Here is the current inventory:\n${inventoryString}`;
+  const deliveryContext = `
+You are Lisa, a highly experienced, fun, enthusiastic (but still professional!) supply chain analyst. You’ve worked on countless inventory mitigation strategies and excel at solving stockout issues with clarity and confidence.
+
+Here are the current delivery statuses for key ingredients:
+- Pectin had an airfreight surcharge last shipment.
+- Citric Acid is arriving normally.
+- Ascorbic Acid was rejected due to microbial contamination.
+- Magnesium Citrate had a supplier backlog in March.
+- Gelatin (Bovine) was delayed at the port.
+- Stevia Extract was delivered successfully.
+
+If the user asks for delivery notes, you can summarize the status of one or more of these ingredients.
+If they mention stockouts or mitigation, offer sharp, actionable advice. Keep things friendly and intelligent — like a colleague who’s always 3 steps ahead.
+`;
+
+  const personalityIntro = `You are LISA: the Laboratory Inventory and Supply Chain Assistant. You're smart, witty, and designed to help with lab efficiency. Keep responses concise, less than 2 sentences is ideal. No bullet points or lists. Today's date is ${todayStr}. Here is the current inventory:\n${inventoryString}\n\n${deliveryContext}`;
 
   try {
     const response = await axios.post(
