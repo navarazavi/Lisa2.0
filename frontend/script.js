@@ -2,7 +2,8 @@ window.addEventListener("load", () => {
   const sendBtn = document.getElementById("send-btn");
   const userInput = document.getElementById("user-input");
   const chatBox = document.getElementById("chat-box");
-  const typingIndicator = document.getElementById("typing-indicator");
+
+  let typingBubble = null;
 
   sendBtn.addEventListener("click", sendMessage);
   userInput.addEventListener("keydown", (e) => {
@@ -27,11 +28,18 @@ window.addEventListener("load", () => {
     // Clear input
     userInput.value = "";
 
-    // ✨ Show typing indicator
-    if (typingIndicator) {
-      typingIndicator.style.display = "inline-block";
-      chatBox.scrollTop = chatBox.scrollHeight;
+    // ✨ Add typing indicator bubble
+    typingBubble = document.createElement("div");
+    typingBubble.classList.add("typing-bubble");
+
+    for (let i = 0; i < 3; i++) {
+      const dot = document.createElement("span");
+      dot.classList.add("dot");
+      typingBubble.appendChild(dot);
     }
+
+    chatBox.appendChild(typingBubble);
+    chatBox.scrollTop = chatBox.scrollHeight;
 
     try {
       const res = await fetch("/ask-lisa", {
@@ -43,11 +51,13 @@ window.addEventListener("load", () => {
       const data = await res.json();
       console.log("Response:", data);
 
-      // ✂️ Hide typing indicator
-      if (typingIndicator) {
-        typingIndicator.style.display = "none";
+      // ✂️ Remove typing indicator
+      if (typingBubble) {
+        typingBubble.remove();
+        typingBubble = null;
       }
 
+      // 🧠 Lisa's reply
       if (data.reply) {
         const lisaBubble = document.createElement("div");
         lisaBubble.classList.add("chat-bubble", "lisa");
@@ -72,8 +82,9 @@ window.addEventListener("load", () => {
       }
     } catch (err) {
       console.error("Fetch error:", err);
-      if (typingIndicator) {
-        typingIndicator.style.display = "none";
+      if (typingBubble) {
+        typingBubble.remove();
+        typingBubble = null;
       }
       const failBubble = document.createElement("div");
       failBubble.classList.add("chat-bubble", "lisa");
