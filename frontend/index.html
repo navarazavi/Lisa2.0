@@ -91,27 +91,28 @@
       max-width: 970px;
     }
 
-  .chat-bubble.lisa {
-    background-color: #FAF9F5;
-    color: #1e293b;
-    align-self: flex-start;
-    border-top-left-radius: 0;
-    position: relative;
-    padding-left: 20px; /* for the circle space */
-    line-height: 1.5;
-    display: flex;
-    align-items: flex-start;
+    .chat-bubble.lisa {
+      background-color: #FAF9F5;
+      color: #1e293b;
+      align-self: flex-start;
+      border-top-left-radius: 0;
+      line-height: 1.4; /* You can still keep this */
+      position: relative;
+      padding-left: 20px; /* Room for the circle */
+      display: flex;
+      align-items: baseline;
   }
 
-  .chat-bubble.lisa::before {
-    content: "";
-    position: absolute;
-    left: 8px;
-    top: 14px; /* 💅 this is the sweet spot */
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background-color: #A8C0C5;
+    .chat-bubble.lisa::before {
+      content: "";
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: #A8C0C5;
+      margin-right: 8px;
+      margin-top: 4px; /* Fine tune as needed */
+      flex-shrink: 0;
   }
 
 
